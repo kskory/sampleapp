@@ -1,0 +1,93 @@
+<html>
+<head>
+    <style>
+        tfoot {color:red;}
+        tfoot td {border-top: 1px solid black;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="ctrl">
+
+<h2>My wallet</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Current unit price</th>
+        <th>Total invested</th>
+        <th>Current total value</th>
+        <th>Profit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="cur in wallet.currencyWallets">
+        <td>{{cur.currency}}</td>
+        <td>{{cur.totalAmount}}</td>
+        <td>${{cur.currentUnitPriceInUsd}}</td>
+        <td>${{cur.totalInvestedInUsd}}</td>
+        <td>${{cur.currentTotalValueInUsd}}</td>
+        <td>${{cur.profitInUsd}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td>Sum</td>
+        <td></td>
+        <td></td>
+        <td>${{wallet.totalInvestedInUsd}}</td>
+        <td>${{wallet.currentTotalValueInUsd}}</td>
+        <td>${{wallet.profitInUsd}}</td>
+    </tr>
+    </tfoot>
+</table>
+
+
+<h2>Add transaction</h2>
+<form ng-submit="add()">
+    <select ng-model="transactionToAdd.currency">
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+        <option value="SC">SC</option>
+    </select>
+    <input type="text" ng-model="transactionToAdd.amount" placeholder="Amount">
+    <input type="text" ng-model="transactionToAdd.unitPriceInUsd" placeholder="Unit price">
+    <select ng-model="transactionToAdd.type">
+        <option value="BUY">Buy</option>
+        <option value="SELL">Sell</option>
+    </select>
+    <input type="datetime-local" ng-model="transactionToAdd.date" placeholder="Date">
+    <input type="submit" value="Add New">
+</form>
+
+<h2>Transactions</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Unit price</th>
+        <th>Transaction type</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="transaction in transactions">
+        <td>{{transaction.currency}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>${{transaction.unitPriceInUsd}}</td>
+        <td>{{transaction.type}}</td>
+        <td>{{transaction.date|date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td><input type="submit" value="Remove" ng-click="remove(transaction.id)"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<br>
+
+</body>
+</html>
