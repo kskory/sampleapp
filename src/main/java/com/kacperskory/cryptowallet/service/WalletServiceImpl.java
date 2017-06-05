@@ -58,7 +58,7 @@ public class WalletServiceImpl implements WalletService {
         BigDecimal profitInUsd = currentTotalValueInUsd.subtract(totalPriceSpentInUsd);
 
         return Wallet.builder().currencyWallets(wallets)
-                .totalInvestedtInUsd(totalPriceSpentInUsd)
+                .totalInvestedInUsd(totalPriceSpentInUsd)
                 .currentTotalValueInUsd(currentTotalValueInUsd)
                 .profitInUsd(profitInUsd)
                 .build();

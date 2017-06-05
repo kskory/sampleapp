@@ -11,7 +11,7 @@ import java.util.List;
 public class Wallet {
     List<CurrencyWallet> currencyWallets;
 
-    BigDecimal totalInvestedtInUsd;
+    BigDecimal totalInvestedInUsd;
     BigDecimal currentTotalValueInUsd;
     BigDecimal profitInUsd;
 }

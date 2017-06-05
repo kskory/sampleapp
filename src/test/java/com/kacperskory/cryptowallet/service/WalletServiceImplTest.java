@@ -80,7 +80,7 @@ public class WalletServiceImplTest {
         BigDecimal currentTotalValueBtc = BTC_AMOUNT_BUY.multiply(CURRENT_BTC_PRICE);
 
         assertEquals(currentTotalValueBtc.add(currentTotalValueEth).subtract(totalInvested), wallet.getProfitInUsd());
-        assertEquals(totalInvested, wallet.getTotalInvestedtInUsd());
+        assertEquals(totalInvested, wallet.getTotalInvestedInUsd());
     }
 
 }
